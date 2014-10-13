@@ -3,10 +3,8 @@ package com.example.copperadmin.testnativefragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 
 
 public class MyActivity extends ActionBarActivity implements TestFragment.Callbacks, BlankFragment.Callbacks {
@@ -63,5 +61,13 @@ public class MyActivity extends ActionBarActivity implements TestFragment.Callba
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+ //       super.onBackPressed();
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            this.finish();
+        } else {
+            getFragmentManager().popBackStack();
+        }
+    }
 }
